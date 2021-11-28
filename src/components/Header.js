@@ -1,5 +1,9 @@
 import React from 'react'
+import Button from '../styles/button/Button'
+import Title from '../styles/title/Title'   
 import Logo from './Logo'
+
+
 
 const header = () => {
 
@@ -20,9 +24,11 @@ const header = () => {
         {id:2, name:"Pepsi"}
     ]
 
+    const keyword = "correctxx" //<<False
+    
     return (
         <div>
-            
+            <Title>I love React</Title>
             <h1>Hello {showMessage()} </h1>
            {companyName}
            {showMessage()}
@@ -38,6 +44,11 @@ const header = () => {
 
            {inslogin ? <Logo/> : <p>Unlock</p>} 
            <button onClick={showMe}>Click Me</button>
+           <Button onClick={showMe} keyword={keyword}> Click me</Button>
+           
+            
+           
+
            <ul>
            {
                proDucts.map((product,index) => {

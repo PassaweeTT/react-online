@@ -7,11 +7,18 @@ const Footter = ({title, website,address,postcode,isOpen}) => {
 
     return (
         <div>
-            <h3>{title} &copy; {new Date().getFullYear()}</h3>
-            <p>{website} {address} {postcode} {isOpen.toString()}</p>
-        </div>
+            <h3 style={styles.title}>{title} &copy; {new Date().getFullYear()}</h3>
+            <p style={{color:"green",fontSize:18}}>{website} {address} {postcode} {isOpen.toString()}</p>
+            <p style={styles.title}>Passawee Wanwilai</p>
+        </div> 
     )
     
+}
+
+const styles = {
+    title:{
+        color:'red'
+    }
 }
 
 Footter.propTypes = {
