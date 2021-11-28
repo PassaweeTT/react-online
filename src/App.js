@@ -6,7 +6,10 @@ function App() {
     <>
       <Logo/>
       <Header/>
-      <Footter/>
+      <Footter title={"Facebook"} website="www.google.com"
+       address="Bangkok" postcode={1207}
+       isOpen={true}></Footter>
+
     
     </>
   );
