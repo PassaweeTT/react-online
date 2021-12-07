@@ -1,16 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-
+import { FaCreativeCommonsPd } from "react-icons/fa";
 const Footter = ({title, website,address,postcode,isOpen}) => {
 
     //const{title,website,address,postcode} = props;
-
+    
     return (
-        <div>
-            <h3 style={styles.title}>{title} &copy; {new Date().getFullYear()}</h3>
-            <p style={{color:"green",fontSize:18}}>{website} {address} {postcode} {isOpen.toString()}</p>
-            <p style={styles.title}>Passawee Wanwilai</p>
-        </div> 
+        <>
+            <footer className="container">
+            <p>© Passawee Wanwilai 2000-{new Date().getFullYear()} <FaCreativeCommonsPd color="red"/></p>
+            </footer>
+        </>
     )
     
 }

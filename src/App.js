@@ -1,22 +1,16 @@
-import Footter from './components/Footter';
-import Header from './components/Header';
-import Logo from './components/Logo';
-import './App.css';
-import Sidebar from './components/Sidebar';
-import Menu from './components/Menu';
+import React from "react";
+import Footter from "./components/Footter";
+import NavBar from "./components/NavBar";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
-    <div className="logo">
-      <Logo/>
-      <Header/>
-      <Footter title={"Facebook"} website="www.google.com"
-       address="Bangkok" postcode={1207}
-       isOpen={true}></Footter>
-      <Sidebar/>
-      <Menu/>
+    <>
+      <NavBar/>
+      <HomePage/>
+      <Footter/>
 
-    </div>
+    </>
   );
 }
 
