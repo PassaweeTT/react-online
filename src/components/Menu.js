@@ -3,7 +3,9 @@ import useHover from '../hooks/useHover'
 
 const Menu = () => {
 
-    const [hover , mouseOver,mouseOut] = useHover()
+    const [hover, mouseOver, mouseOut] = useHover()
+
+
     return (
         <div>
             <h1>Menu</h1>

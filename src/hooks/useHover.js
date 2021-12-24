@@ -1,17 +1,19 @@
-import React from "react";
+import React from 'react'
 
 function useHover(){
+
     const [hover, setHover] = React.useState()
 
-    const mouseOver = () =>{
+    const mouseOver = () => {
         setHover(true)
     }
 
-    const mouseOut = () =>{
+    const mouseOut = () => {
         setHover(false)
     }
-    return [hover,mouseOver,mouseOut]
-}
 
+    return [hover, mouseOver, mouseOut]
+
+}
 
 export default useHover

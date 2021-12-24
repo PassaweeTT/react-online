@@ -1,16 +1,25 @@
 import React from "react";
-import Footter from "./components/Footter";
+import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
-    <>
-      <NavBar/>
-      <HomePage/>
-      <Footter/>
-
-    </>
+    <Router>
+      <NavBar />
+      <Switch>
+        <Route path="/" exact ><HomePage /></Route>
+        <Route path="/about"><AboutPage /></Route>
+      </Switch>
+      <Footer />
+    </Router>
   );
 }
 

@@ -1,23 +1,20 @@
-import Footter from './components/Footter';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import Logo from './components/Logo';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import Menu from './components/Menu';
 
-function App_v1() {
+function App() {
   return (
     <div className="logo">
-      <Logo/>
-      <Header/>
-      <Footter title={"Facebook"} website="www.google.com"
-       address="Bangkok" postcode={1207}
-       isOpen={true}></Footter>
-      <Sidebar/>
-      <Menu/>
-
+      <Logo />
+      <Header />
+      <Footer title={"TNI"} website="www.google.com" address="Bangkok" postcode={10220} isOpen></Footer>
+      <Sidebar />
+      <Menu />
     </div>
   );
 }
 
-export default App_v1;
+export default App;

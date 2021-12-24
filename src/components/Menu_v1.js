@@ -1,14 +1,14 @@
 import React from 'react'
 
-const Menu_v1 = () => {
+const Menu1 = () => {
 
     const [hover, setHover] = React.useState()
 
-    const mouseOver = () =>{
+    const mouseOver = () => {
         setHover(true)
     }
 
-    const mouseOut = () =>{
+    const mouseOut = () => {
         setHover(false)
     }
 
@@ -23,4 +23,4 @@ const Menu_v1 = () => {
     )
 }
 
-export default Menu_v1
+export default Menu1
