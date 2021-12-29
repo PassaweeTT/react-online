@@ -1,11 +1,9 @@
 import React from 'react'
-import { logo, title } from '../styles/style'
+import {logo,title} from '../styles/style'
 import useHover from '../hooks/useHover'
 
 const Logo = () => {
-
-    const [hover, mouseOver, mouseOut] = useHover()
-
+    const[hover,mouseOver,mouseOut] = useHover()
     // const logoImage = "./logo192.png"
     const logoImage = {
         url: './logo192.png'
@@ -13,12 +11,13 @@ const Logo = () => {
 
     return (
         <div>
-            <h3 style={title}>Logo</h3>
-            {/* <img src={logoImage} width="100" alt="logo" /> */}
+            <h3 style ={title}>Logo</h3>
+            <img onMouseOver={mouseOver} onMouseOut={mouseOut} style={logo} src={logoImage.url} width="100" alt="Logo"/>
             {
-                hover ? <p>Logo</p> : null
+                hover ? <h3>Logo</h3> : null
             }
-            <img onMouseOver={mouseOver} onMouseOut={mouseOut} style={logo} src={logoImage.url} width="100" alt="logo" />
+            {/* <img src={logoImage} width="100" alt="Logo"/> */}
+          
         </div>
     )
 }

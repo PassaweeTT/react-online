@@ -1,14 +1,14 @@
 import React from 'react'
-import { BsFillHeartFill } from 'react-icons/bs'
-
-const HomePage = () => {
+import {FaGithubAlt} from 'react-icons/fa'
+const Homepage = () => {
     return (
-        <div>
-            <main role="main">
+      
+              <div>
+        <main role="main">
           {/* Main jumbotron for a primary marketing message or call to action */}
           <div className="jumbotron">
             <div className="container">
-              <h1 className="display-3">Hello, world! <BsFillHeartFill color="pink" /> </h1>
+              <h1 className="display-3">Hello, world!      <FaGithubAlt color="skyblue" size="2em"/></h1>
               <p>
                 This is a template for a simple marketing or informational
                 website. It includes a large callout called a jumbotron and
@@ -76,8 +76,10 @@ const HomePage = () => {
           </div>{" "}
           {/* /container */}
         </main>
-        </div>
+ 
+      </div>
+      
     )
 }
 
-export default HomePage
+export default Homepage
