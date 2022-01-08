@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table, Image, Badge, Spinner,Button } from "react-bootstrap"
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 import { BsFillMouseFill } from "react-icons/bs";
 const ProductPage = () => {
 
@@ -69,8 +70,12 @@ const ProductPage = () => {
                                             <td>{p.detail}</td>
                                             <td>{p.date}</td>
                                             <td> <Badge variant="success">{p.view}</Badge></td>
-                                            <td> <Image src={p.picture} rounded width={60} /> </td>
-                                            <td><Button href='/detail' variant="outline-info">Click <BsFillMouseFill color="outline-info" size="1em"/></Button>{' '}</td>
+                                            <td> <Image src={p.picture} rounded width={60} /> </td>                                      
+                                            <td>
+                                                <Link to={`/detail/${p.id}/title/${p.title}`}>
+                                                    <Button variant="outline-info">Click<BsFillMouseFill/></Button>
+                                                </Link>
+                                            </td>
                                         </tr>
 
                                     )
