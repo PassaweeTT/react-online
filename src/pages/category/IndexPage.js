@@ -78,7 +78,26 @@ const IndexPage = () => {
                       <Button variant="outline-primary">
                         Edit <BsFillPencilFill className="mr-1" />
                       </Button>
-                      <Button className="ml-2" variant="outline-danger">
+                      <Button
+                        className="ml-2"
+                        variant="outline-danger"
+                        onClick={async () => {
+                          const isConfirm = window.confirm(
+                            "Confirm to delete >> " + c.name + " ?"
+                          );
+                          if (isConfirm === true) {
+                            try {
+                              const resp = await axios.delete(
+                                `https://api.codingthailand.com/api/category/${c.id}`
+                              );
+                              alert(resp.data.message);
+                              history.go(0);
+                            } catch (error) {
+                              alert(error);
+                            }
+                          }
+                        }}
+                      >
                         Delete <BsFillTrashFill className="mr-1" color="red" />
                       </Button>
                     </td>
