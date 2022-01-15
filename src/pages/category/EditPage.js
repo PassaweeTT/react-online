@@ -6,7 +6,6 @@ import * as yup from "yup";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
 
-
 const schema = yup
   .object({
     name: yup.string().required("Category news cannot ne null"),
@@ -14,51 +13,40 @@ const schema = yup
   .required();
 
 const EditPage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
+  const { register,handleSubmit,formState: { errors },setValue } = useForm({
     resolver: yupResolver(schema),
   });
 
   const history = useHistory();
   const { id } = useParams();
 
-  const [category , setCategory] = React.useState([])
-  const [loading , setLoading] = React.useState(false)
-  const [error , setError] = React.useState(null)
-  
-  const onSubmit = async (data) => {
-    // try {
-    //   //console.log(data)
-    //   const apiURL = "https://api.codingthailand.com/api/category";
-    //   const resp = await axios.post(apiURL, {
-    //     name: data.name,
-    //   });
-    //   alert(resp.data.message);
-    //   history.goBack();
-    // } catch (error) {
-    //   alert(error);
-    // }
+
+  const getData = async (id) => {
+    const resp = await axios.get(
+      "https://api.codingthailand.com/api/category/" + id
+    );
+    setValue('name',resp.data.name);
   };
 
-  const getData = async(id) => {
+  const onSubmit = async (data) => {
     try {
-        setLoading(true)
-        const response = await axios.get(`https://api.codingthailand.com/api/category/` + id)
-        console.log(response.data)
-        setCategory(response.data)
+      //console.log(data)
+      const apiURL = "https://api.codingthailand.com/api/category";
+      const resp = await axios.put(apiURL, 
+        {
+            id: id,
+            name: data.name,
+        });
+      alert(resp.data.message);
+      history.replace('/category');
     } catch (error) {
-        setError(error)
-    } finally {
-        setLoading(false)
+        console.log(error.response)
     }
-}
-    React.useEffect(() =>{
-        getData(id);
-    },[id])
+  };
 
+  React.useEffect(() => {
+    getData(id);
+  }, [id]);
 
   return (
     <div className="container">
@@ -82,7 +70,7 @@ const EditPage = () => {
             </Form.Group>
 
             <Button variant="primary" type="submit">
-              Submit
+              Update
             </Button>
           </Form>
         </div>
