@@ -3,12 +3,14 @@ import { Table, Spinner, Button } from "react-bootstrap";
 import axios from "axios";
 import { BsFillTrashFill, BsFillPencilFill } from "react-icons/bs";
 import { Link, useHistory } from "react-router-dom";
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 const IndexPage = () => {
   const [Category, setCategory] = React.useState([]);
   const [loading, setLoading] = React.useState([false]);
   const [error, setError] = React.useState();
   const history = useHistory();
+  const { addToast } = useToasts()
 
   const getData = async () => {
     try {
@@ -90,8 +92,9 @@ const IndexPage = () => {
                               const resp = await axios.delete(
                                 `https://api.codingthailand.com/api/category/${c.id}`
                               );
-                              alert(resp.data.message);
-                              history.go(0);
+                              //alert(resp.data.message);
+                              addToast(resp.data.message , {appearance: 'success', autoDismiss: true})
+                              //history.go(0);
                             } catch (error) {
                               alert(error);
                             }

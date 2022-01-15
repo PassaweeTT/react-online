@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
+import { ToastProvider, useToasts } from 'react-toast-notifications';
 
 const schema = yup
   .object({
@@ -19,6 +20,7 @@ const EditPage = () => {
 
   const history = useHistory();
   const { id } = useParams();
+  const { addToast } = useToasts()
 
 
   const getData = async (id) => {
@@ -27,6 +29,7 @@ const EditPage = () => {
     );
     setValue('name',resp.data.name);
   };
+
 
   const onSubmit = async (data) => {
     try {
@@ -37,7 +40,8 @@ const EditPage = () => {
             id: id,
             name: data.name,
         });
-      alert(resp.data.message);
+      //alert(resp.data.message);
+      addToast(resp.data.message , {appearance: 'success', autoDismiss: true})
       history.replace('/category');
     } catch (error) {
         console.log(error.response)
