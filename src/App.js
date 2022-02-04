@@ -16,6 +16,8 @@ import Uploadpage from "./pages/Uploadpage";
 import { ToastProvider } from "react-toast-notifications";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
+import MemberPage from "./pages/MemberPage";
+import PrivateRoute from "./guard/auth";
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
           <Route path="/upload"><Uploadpage /></Route>
           <Route path='/register'><RegisterPage/></Route>
           <Route path='/login'><LoginPage/></Route>
+          <PrivateRoute path='/member'><MemberPage/></PrivateRoute>
           {/*<Route path='/category'><indexPage/></Route>*/}
           <Route
             path="/category"
@@ -41,8 +44,8 @@ function App() {
                 <Route path={`${url}/create`}><CreatePage></CreatePage></Route>
                 <Route path={`${url}/edit/:id`}><EditPage></EditPage></Route>
               </>
-            )}
-          ></Route>
+            )}></Route>
+          
         </Switch>
         <Footer />
       </Router>
