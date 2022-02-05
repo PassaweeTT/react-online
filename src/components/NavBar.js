@@ -1,19 +1,21 @@
 import React from "react";
 import {Navbar,Nav,NavDropdown,Form,FormControl,Button} from "react-bootstrap"
 import {NavLink , useHistory} from "react-router-dom"
+import { UserStoreContext } from "../context/UserContext";
 
 const NavBar = () => {
 
   const history = useHistory();
-  const [profile,setProfile] = React.useState(null)
+  const userStore = React.useContext(UserStoreContext)
+  //const [profile,setProfile] = React.useState(null)
 
-  const getProfile = () =>{
-      //localStorage.getItem('profile')
-      const profileValue = JSON.parse(localStorage.getItem('profile'))
-      if(profileValue){
-        setProfile(profileValue)
-      }
-  }
+  // const getProfile = () =>{
+  //     //localStorage.getItem('profile')
+  //     const profileValue = JSON.parse(localStorage.getItem('profile'))
+  //     if(profileValue){
+  //       setProfile(profileValue)
+  //     }
+  // }
 
   const logout = () =>{
     localStorage.removeItem('token')
@@ -22,9 +24,9 @@ const NavBar = () => {
     history.go(0)
   }
 
-  React.useEffect(()=>{
-    getProfile()
-  },[])
+  // React.useEffect(()=>{
+  //   getProfile()
+  // },[])
 
   return (
     <div>
@@ -37,10 +39,8 @@ const NavBar = () => {
             {/* <Nav.Link href="#home">Home</Nav.Link> */}
             <NavLink className="nav-link" activeClassName="active" to="/" exact>Home</NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/product" >Product</NavLink>
-            <NavLink className="nav-link" activeClassName="active" to="/detail" >Detail</NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/about" >About</NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/contactus" >Contactus</NavLink>
-            <Nav.Link href="#link">Link</Nav.Link>
 
             <NavDropdown title="Workshop Pagination" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={() => {
@@ -64,10 +64,11 @@ const NavBar = () => {
             <Button variant="outline-success">Search</Button>
           </Form>
           {
-            profile ?(
-              <span className="nav-text">Welcome {profile.name} 
-              <button className="btn btn-danger ml-2" onClick={logout}>Logout</button>
-              </span>
+            userStore.profile ? (
+              <span className="nav-text">Welcome {userStore.profile.name} 
+              <button onClick={logout} className="btn btn-danger ml-2">
+                Logout</button>
+                </span>
             ) : (
               <>
                 <Nav>
