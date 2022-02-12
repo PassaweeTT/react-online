@@ -19,6 +19,7 @@ import LoginPage from "./pages/LoginPage";
 import MemberPage from "./pages/MemberPage";
 import PrivateRoute from "./guard/auth";
 import UserStoreProvider from './context/UserContext';
+import CartPage from "./pages/CartPage";
 
 // redux setup
 import { Provider } from 'react-redux'
@@ -67,6 +68,10 @@ function App() {
               <Uploadpage />
             </Route>
  
+            <Route path="/cart">
+              <CartPage />
+            </Route>
+
             <PrivateRoute path="/member">
               <MemberPage />
             </PrivateRoute>

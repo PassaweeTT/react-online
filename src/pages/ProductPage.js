@@ -3,11 +3,20 @@ import { Table, Image, Badge, Spinner,Button } from "react-bootstrap"
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { BsFillMouseFill } from "react-icons/bs";
+import { addToCart } from "../redux/actions/cartAction";
+import {useSelector,useDispatch} from 'react-redux'
+
 const ProductPage = () => {
 
     const [product, setProduct] = React.useState([])
     const [loading, setLoading] = React.useState(false)
     const [error, setError] = React.useState(null)
+
+    const cart = useSelector((state) => state.cartReducer.cart)
+    const total = useSelector((state) => state.cartReducer.total)
+
+    const dispath = useDispatch()
+
     const getData = async () => {
         try {
             setLoading(true) //เริ่มหมุนติ้วๆ
@@ -43,6 +52,18 @@ const ProductPage = () => {
         )
     }
 
+    const addCart = (p) => {
+        const product = {
+            id:p.id,
+            name:p.title,
+            price:p.view, //สมมติให้วิว คือราคา
+            qty : 1
+        }
+
+        //call action
+        dispath(addToCart(product,cart))
+    }
+
     return (
         <div className="container">
             <div className="row">
@@ -75,6 +96,7 @@ const ProductPage = () => {
                                                 <Link to={`/detail/${p.id}/title/${p.title}`}>
                                                     <Button variant="outline-info">Click<BsFillMouseFill/></Button>
                                                 </Link>
+                                                <Button variant="outline-warning" className="ml-3" onClick={() => addCart(p)} >Buy</Button>
                                             </td>
                                         </tr>
 

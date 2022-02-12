@@ -9,7 +9,7 @@ const authReducer = (state = initState,action) => {
         case GET_PROFILE: 
             return{
                 ...state,
-                profile: action.payload.profile
+                profile: action.spayload.profile
             }
 
         default: 
